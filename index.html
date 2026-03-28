@@ -58,12 +58,14 @@
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
-  #slideshow img {
+#slideshow img {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* instead of cover */
-  background: #000;      /* optional: adds black bars if aspect ratio differs */
+  object-fit: contain;
+  background: #000;
+  opacity: 0;              /* hide by default */
+  transition: opacity 1s;  /* smooth fade */
 }
     #slideshow img.active {
       opacity: 1;
