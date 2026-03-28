@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday Dear Jishmi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobile scaling -->
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       background: #ffe6f2;
       margin: 0;
-      padding: 50px;
+      padding: 30px;
     }
     h1 {
       color: #d63384;
@@ -32,10 +33,10 @@
     }
     #celebration {
       display: none;
-      margin-top: 50px;
+      margin-top: 40px;
     }
     #celebration h2 {
-      font-size: 2em;
+      font-size: 1.8em;
       color: #d63384;
     }
     canvas {
@@ -46,37 +47,31 @@
       height: 100%;
       pointer-events: none;
     }
-    /* Slideshow styling */
-  #slideshow {
-  margin-top: 30px;
-  position: relative;
-  width: 80%;          /* make it responsive */
-  max-width: 600px;    /* limit maximum size */
-  height: auto;        /* let height adjust */
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
 
-#slideshow img {
-  position: absolute;
-  width: 100%;
-  height: auto;             /* keep natural aspect ratio */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* center the image */
-  object-fit: contain;
-  background: #000;
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-#slideshow img.active {
-  opacity: 1;
-}
-
+    /* Horizontal scrolling gallery */
+    #gallery-wrapper {
+      overflow: hidden;
+      width: 100%;
+      max-width: 90%;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    #gallery {
+      display: flex;
+      animation: scroll 20s linear infinite;
+    }
+    #gallery img {
+      width: 250px;
+      height: auto;
+      margin: 0 10px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     audio {
       margin-top: 20px;
@@ -114,13 +109,21 @@
     <h2>🎉 It’s your birthday My Dear, Jishmi! 🎂</h2>
     <p>Wishing you love, joy, and endless happiness!</p>
 
-    <!-- Slideshow -->
-    <div id="slideshow">
-      <img src="Ring.JPG" class="active" alt="Memory 1">
-      <img src="Sipup.jpg" alt="Memory 2">
-      <img src="birthday.jpg" alt="Memory 3">
-      <img src="Laugh.JPG" alt="Memory 4">
-      <img src="photo200.jpg" alt="Memory 5">
+    <!-- Horizontal gallery -->
+    <div id="gallery-wrapper">
+      <div id="gallery">
+        <img src="Ring.JPG" alt="Memory 1">
+        <img src="Sipup.jpg" alt="Memory 2">
+        <img src="birthday.jpg" alt="Memory 3">
+        <img src="Laugh.JPG" alt="Memory 4">
+        <img src="photo200.jpg" alt="Memory 5">
+        <!-- duplicate images for seamless loop -->
+        <img src="Ring.JPG" alt="Memory 1">
+        <img src="Sipup.jpg" alt="Memory 2">
+        <img src="birthday.jpg" alt="Memory 3">
+        <img src="Laugh.JPG" alt="Memory 4">
+        <img src="photo200.jpg" alt="Memory 5">
+      </div>
     </div>
 
     <!-- Music Player -->
@@ -144,7 +147,6 @@
       } else {
         document.getElementById("celebration").style.display = "block";
         startConfetti();
-        startSlideshow();
       }
     }
 
@@ -183,17 +185,6 @@
         }
       });
       requestAnimationFrame(drawConfetti);
-    }
-
-    // Slideshow logic
-    function startSlideshow() {
-      const slides = document.querySelectorAll("#slideshow img");
-      let index = 0;
-      setInterval(() => {
-        slides[index].classList.remove("active");
-        index = (index + 1) % slides.length;
-        slides[index].classList.add("active");
-      }, 3000); // change every 3 seconds
     }
   </script>
 
