@@ -49,25 +49,24 @@
     }
 
     /* Horizontal scrolling gallery */
-    #gallery-wrapper {
-      overflow: hidden;
-      width: 100%;
-      max-width: 95%;
-      margin: 20px auto;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    }
-    #gallery {
-      display: flex;
-      animation: scroll 2s linear infinite;
-    }
-    #gallery img {
-      width: 250px;
-      height: auto;
-      margin: 0 10px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
+  #gallery-wrapper {
+  overflow-x: auto;       /* allow horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  white-space: nowrap;    /* keep images in one line */
+  width: 100%;
+  max-width: 95%;
+  margin: 20px auto;
+}
+
+#gallery img {
+  display: inline-block;
+  width: 250px;
+  height: auto;
+  margin: 0 10px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -110,21 +109,16 @@
     <p>Wishing you love, joy, and endless happiness!</p>
 
     <!-- Horizontal gallery -->
-    <div id="gallery-wrapper">
-      <div id="gallery">
-        <img src="Ring.JPG" alt="Memory 1">
-        <img src="Sipup.jpg" alt="Memory 2">
-        <img src="birthday.jpg" alt="Memory 3">
-        <img src="laugh.JPG" alt="Memory 4">
-        <img src="photo200.jpg" alt="Memory 5">
-        <!-- duplicate images for seamless loop -->
-        <img src="Ring.JPG" alt="Memory 1">
-        <img src="Sipup.jpg" alt="Memory 2">
-        <img src="birthday.jpg" alt="Memory 3">
-        <img src="laugh.JPG" alt="Memory 4">
-        <img src="photo200.jpg" alt="Memory 5">
-      </div>
-    </div>
+  <div id="gallery-wrapper">
+  <div id="gallery">
+    <img src="Ring.JPG" alt="Memory 1">
+    <img src="Sipup.jpg" alt="Memory 2">
+    <img src="birthday.jpg" alt="Memory 3">
+    <img src="Laugh.JPG" alt="Memory 4">
+    <img src="photo200.jpg" alt="Memory 5">
+  </div>
+</div>
+
 
     <!-- Music Player -->
     <audio controls autoplay>
